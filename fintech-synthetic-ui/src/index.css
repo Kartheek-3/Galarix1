@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================= */
+/* 🎯 SCROLLBAR */
+/* ============================= */
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-in;
+}
+@keyframes rowFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.row-animate {
+  animation: rowFade 0.3s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.7);
+}
+
+/* ============================= */
+/* 🧠 BODY */
+/* ============================= */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.2s ease-out;
+}
+body {
+  overflow: auto;
+}
+
+/* ============================= */
+/* ✨ MODAL ANIMATION */
+/* ============================= */
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 200ms ease-out forwards;
+}
+
+.animate-modal-out {
+  animation: modal-out 150ms ease-in forwards;
+}
+
+/* ============================= */
+/* ✨ FADE IN */
+/* ============================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease;
+}
+
+/* ============================= */
+/* ✨ INPUT GLOW */
+/* ============================= */
+
+.input-glow {
+  transition: all 0.25s ease;
+}
+
+.input-glow:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.6),
+              0 0 20px rgba(59, 130, 246, 0.3);
+  border-color: #3b82f6;
+}
+
+/* ============================= */
+/* 💧 RIPPLE BUTTON */
+/* ============================= */
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.ripple:active::after {
+  width: 200px;
+  height: 200px;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+/* ============================= */
+/* 🌈 ANIMATED BACKGROUND */
+/* ============================= */
+
+.bg-animated {
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #2563eb, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================= */
+/* 🌌 GALARIX BACKGROUND ENGINE */
+/* ============================= */
+
+.galarix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✨ PARTICLES */
+/* ✨ PARTICLES */
+.galarix-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#3b82f6 1px, transparent 1px),
+                    radial-gradient(#06b6d4 1px, transparent 1px);
+  background-size: 40px 40px, 60px 60px;
+  opacity: 0.15;
+  animation: particleMove 20s linear infinite;
+  z-index: 0;
+
+  pointer-events: none; /* ✅ VERY IMPORTANT FIX */
+}
+
+@keyframes particleMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-200px, -200px); }
+}
+
+/* 🔤 MAIN TEXT */
+.galarix-bg::before {
+  content: "GALARIX";
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%)
+             translate(var(--moveX, 0), var(--moveY, 0))
+             perspective(800px)
+             rotateX(10deg);
+
+  font-size: 260px;
+  font-weight: 900;
+  letter-spacing: 80px;
+
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0;
+
+  animation:
+    typingReveal 3s ease forwards,
+    dissolveLoop 10s ease-in-out infinite,
+    float3D 6s ease-in-out infinite;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+
+  text-shadow:
+    0 0 20px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(6, 182, 212, 0.2),
+    0 0 80px rgba(99, 102, 241, 0.2);
+}
+
+/* ✨ FORMATION */
+@keyframes typingReveal {
+  0% {
+    opacity: 0;
+    letter-spacing: 120px;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 0.08;
+    letter-spacing: 30px;
+    filter: blur(0);
+  }
+}
+
+/* 💨 DISSOLVE */
+@keyframes dissolveLoop {
+  0%, 100% { opacity: 0.08; }
+  50% {
+    opacity: 0.18;
+    letter-spacing: 40px;
+  }
+}
+
+/* 🌊 FLOAT */
+@keyframes float3D {
+  0% {
+    transform: translate(-50%, -50%) perspective(800px) rotateX(10deg);
+  }
+  50% {
+    transform: translate(-50%, -47%) perspective(800px) rotateX(15deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) perspective(800px) rotateX(10deg);
+  }
+}
+/* ============================= */
+/* ✨ DROPDOWN ANIMATION */
+/* ============================= */
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dropdown-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+}
+
+.animate-dropdown-in {
+  animation: dropdown-in 0.2s ease-out forwards;
+}
+
+.animate-dropdown-out {
+  animation: dropdown-out 0.15s ease-in forwards;
+}
